@@ -36,12 +36,11 @@ Specifically:
 ---
 
 ## 🔧 Implementation Notes
-	•	Oracles: implement flexible oracle constructors that can represent any chosen set of targets (binary strings). Provide:
-	•	ancilla-based oracles using multi-controlled Toffolis, and
-	•	ancilla-free constructions when possible (discuss tradeoffs).
-	•	Grover iteration: compose oracle + diffusion operator; allow variable number of iterations.
-	•	Quantum counting: implement phase estimation on the Grover operator to extract the eigenphase and infer m.
-	•	Noise study: compare ideal (noiseless) QASM simulator and noisy simulations (Aer noise models). When comparing encoded vs unencoded or single-qubit experiments, remember to apply identity gates to trigger noise on “idle” qubits.
+Oracles: implement flexible oracle constructors that can represent any chosen set of targets (binary strings).  
+Provide: ancilla-based oracles using multi-controlled Toffolis, and ancilla-free constructions when possible (discuss tradeoffs).  
+Grover iteration: compose oracle + diffusion operator; allow variable number of iterations.  
+Quantum counting: implement phase estimation on the Grover operator to extract the eigenphase and infer m.  
+Noise study: compare ideal (noiseless) QASM simulator and noisy simulations (Aer noise models). When comparing encoded vs unencoded or single-qubit experiments, remember to apply identity gates to trigger noise on “idle” qubits.
 
 ---
 
@@ -76,11 +75,12 @@ All results are presented in the notebook, all functions are provides in `src/`
 ---
 
 ## 📈 Experiments to Include
-	•	Success probability vs number of Grover iterations for various n, m.
-	•	Probability of measuring a target vs total database size N=2^n.
-	•	Quantum counting accuracy vs precision of phase estimation.
-	•	Noise sensitivity: compare ideal vs noisy runs; plot threshold where noise obliterates advantage.
-	•	Comparison of ancilla-based vs ancilla-free oracle depth/gate counts.
+
+Success probability vs number of Grover iterations for various n, m.  
+Probability of measuring a target vs total database size N=2^n.  
+Quantum counting accuracy vs precision of phase estimation.  
+Noise sensitivity: compare ideal vs noisy runs; plot threshold where noise obliterates advantage.  
+Comparison of ancilla-based vs ancilla-free oracle depth/gate counts.  
 
 ---
 
