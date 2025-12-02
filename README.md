@@ -1,9 +1,9 @@
 # Grover’s Search & Quantum Counting — EPFL PHYS-541 Project (2025–2026)
 
-This repository contains my work for Project 6 — Grover and Quantum Counting \\
-Course: Quantum Computing (PHYS-541), 2025–2026 \\
-Teacher: Vincenzo Savona — vincenzo.savona@epfl.ch \\
-Assistants: Sara Alves dos Santos, David Linteau, Shao Chiew
+This repository contains my work for Project 6 — Grover and Quantum Counting  
+Course: Quantum Computing (PHYS-541), 2025–2026  
+Teacher: Vincenzo Savona — vincenzo.savona@epfl.ch  
+Assistants: Sara Alves dos Santos, David Linteau, Shao Chiew  
 
 ---
 
@@ -86,7 +86,7 @@ All results are presented in the notebook, all functions are provides in `src/`
 
 ## 📚 References
 
-[1] M. A. Nielsen & I. L. Chuang — Quantum Computation and Quantum Information (Grover chapter) \\
-[2] L. K. Grover — A fast quantum mechanical algorithm for database search \\
-[3] Brassard, Høyer, Mosca, Tapp — Quantum Amplitude Amplification and Estimation \\
-[4] Textbooks and lecture notes on complexity theory and lower bounds for quantum search# Grover-s-Search
+[1] M. A. Nielsen & I. L. Chuang — Quantum Computation and Quantum Information (Grover chapter)  
+[2] L. K. Grover — A fast quantum mechanical algorithm for database search  
+[3] Brassard, Høyer, Mosca, Tapp — Quantum Amplitude Amplification and Estimation  
+[4] Textbooks and lecture notes on complexity theory and lower bounds for quantum search# Grover-s-Search  
