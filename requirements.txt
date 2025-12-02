@@ -1,0 +1,31 @@
+# Qiskit et Aer
+qiskit>=0.46.0
+qiskit-aer
+rustworkx>=0.17.1
+
+# Python scientific stack
+numpy>=1.26.0
+scipy>=1.11.0
+matplotlib>=3.7.2
+pillow>=12.0.0
+
+# Jupyter / notebook
+ipython>=9.7.0
+ipykernel>=7.1.0
+jupyter-client>=8.6.3
+jupyter-core>=5.9.1
+matplotlib-inline>=0.2.1
+pylatexenc>=2.10
+
+# Utilities
+decorator>=5.2.1
+packaging>=25.0
+typing-extensions>=4.15.0
+tornado>=6.5.2
+psutil>=7.1.3
+pexpect>=4.9.0
+prompt_toolkit>=3.0.52
+
+# Optional / debugging
+debugpy>=1.8.17
+stack-data>=0.6.3
