@@ -1,11 +1,11 @@
 # Grover’s Search & Quantum Counting — EPFL PHYS-541 Project (2025–2026)
 
-This repository contains my work for Project 6 — Grover and Quantum Counting
-Course: Quantum Computing (PHYS-541), 2025–2026
-Teacher: Vincenzo Savona — vincenzo.savona@epfl.ch
+This repository contains my work for Project 6 — Grover and Quantum Counting \\
+Course: Quantum Computing (PHYS-541), 2025–2026 \\
+Teacher: Vincenzo Savona — vincenzo.savona@epfl.ch \\
 Assistants: Sara Alves dos Santos, David Linteau, Shao Chiew
 
-⸻
+---
 
 ## 🎯 Project Goals
 
@@ -33,7 +33,7 @@ Specifically:
 	•	focus on regimes with small Grover angle (\theta/2 \sim \sqrt{m/N}) where many Grover iterations are required,
 	•	find the largest practical n before noise dominates.
 
-⸻
+---
 
 ## 🔧 Implementation Notes
 	•	Oracles: implement flexible oracle constructors that can represent any chosen set of targets (binary strings). Provide:
@@ -43,7 +43,7 @@ Specifically:
 	•	Quantum counting: implement phase estimation on the Grover operator to extract the eigenphase and infer m.
 	•	Noise study: compare ideal (noiseless) QASM simulator and noisy simulations (Aer noise models). When comparing encoded vs unencoded or single-qubit experiments, remember to apply identity gates to trigger noise on “idle” qubits.
 
-⸻
+---
 
 ## 📂 Suggested Repository Structure
 
@@ -55,41 +55,25 @@ Specifically:
 │   │   ├── diffusion.py         # diffusion operator implementations
 │   │   ├── grover.py            # compose iterations, run experiments
 │   │   └── counting.py          # quantum counting (phase estimation on Grover)
-│   ├── utils.py                 # helpers: state prep, bitstrings, measurement
-│   └── noise_experiments.py     # scripts to run noisy simulations and aggregate results
-├── results/
-│   ├── success_probabilities/   # JSON/CSV with experimental data
-│   ├── noise_plots/             # plots comparing noise levels and n
-│   └── readme_results.md
+│   └── utils.py                 # helpers: state prep, bitstrings, measurement
 ├── requirements.txt
 ├── notebook.ipynb
 └── README.md
 ```
 
-⸻
+---
 
 ## 🧪 Usage & Quick Start
 
 Install dependencies (recommended inside a virtualenv):
 
+```
 pip install -r requirements.txt
+```
 
-Typical workflow examples:
-	•	Run a single Grover experiment (noiseless) for n=5, m=1:
+All results are presented in the notebook, all functions are provides in `src/`
 
-python -m src.grover.grover --n 5 --targets "00101" --iterations 7 --backend qasm_simulator
-
-	•	Run quantum counting to estimate m:
-
-python -m src.grover.counting --n 5 --targets_file targets.json --precision 6
-
-	•	Run noisy simulations (Aer noise model):
-
-python src/noise_experiments.py --n 6 --m 1 --noise_model depolarizing --p 0.001 --shots 2000
-
-(Concrete CLI flags and scripts should be implemented inside src/ according to the repo’s design.)
-
-⸻
+---
 
 ## 📈 Experiments to Include
 	•	Success probability vs number of Grover iterations for various n, m.
@@ -98,28 +82,11 @@ python src/noise_experiments.py --n 6 --m 1 --noise_model depolarizing --p 0.001
 	•	Noise sensitivity: compare ideal vs noisy runs; plot threshold where noise obliterates advantage.
 	•	Comparison of ancilla-based vs ancilla-free oracle depth/gate counts.
 
-⸻
-
-## ⚙️ Requirements
-	•	Python 3.11+
-	•	Qiskit (qiskit, qiskit-aer)
-	•	NumPy, SciPy, Matplotlib, Pandas (for data analysis)
-	•	Jupyter
-
-Example requirements.txt:
-
-qiskit
-qiskit-aer
-numpy
-scipy
-matplotlib
-pandas
-jupyter
-
-⸻
+---
 
 ## 📚 References
-	•	M. A. Nielsen & I. L. Chuang — Quantum Computation and Quantum Information (Grover chapter)
-	•	L. K. Grover — A fast quantum mechanical algorithm for database search
-	•	Brassard, Høyer, Mosca, Tapp — Quantum Amplitude Amplification and Estimation
-	•	Textbooks and lecture notes on complexity theory and lower bounds for quantum search# Grover-s-Search
+
+[1] M. A. Nielsen & I. L. Chuang — Quantum Computation and Quantum Information (Grover chapter) \\
+[2] L. K. Grover — A fast quantum mechanical algorithm for database search \\
+[3] Brassard, Høyer, Mosca, Tapp — Quantum Amplitude Amplification and Estimation \\
+[4] Textbooks and lecture notes on complexity theory and lower bounds for quantum search# Grover-s-Search
