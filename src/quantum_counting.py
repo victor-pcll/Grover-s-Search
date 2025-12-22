@@ -1,33 +1,60 @@
+import numpy as np
 from qiskit import QuantumCircuit, transpile
 from qiskit_aer import AerSimulator
-from qiskit.circuit.library import PhaseEstimation
-from grover_unitary import grover_unitary
+from qiskit.circuit.library import PhaseEstimation, GroverOperator
 
-def quantum_counting(n, targets, t_bits=6, shots=4000, ancilla_qubits=1):
+def quantum_counting(n, targets, t_bits=6, shots=4000, ancilla_qubits=0):
+    
+    # --- 1. Construction de l'Oracle de Phase ---
+    # L'oracle doit inverser le signe (|x> -> -|x>) des états cibles.
+    oracle = QuantumCircuit(n)
+    for target in targets:
+        # Inverse l'ordre pour correspondre à la convention Qiskit (q0 à droite)
+        rev_target = target[::-1]
+        
+        # Applique des portes X pour que l'état cible devienne |11...1>
+        for i, bit in enumerate(rev_target):
+            if bit == '0':
+                oracle.x(i)
+        
+        # Applique un Z multi-contrôlé (MCZ) sur tout le registre
+        # Astuce: H -> MCX -> H est équivalent à MCZ
+        oracle.h(n-1)
+        oracle.mcx(list(range(n-1)), n-1)
+        oracle.h(n-1)
+        
+        # Annule les portes X (Uncomputation)
+        for i, bit in enumerate(rev_target):
+            if bit == '0':
+                oracle.x(i)
 
-    # Build Grover gate
-    G = grover_unitary(n, targets, ancilla_qubits=ancilla_qubits)
-    # PhaseEstimation expects a unitary (Gate or Circuit)
-    pe = PhaseEstimation(t_bits, G)
+    # --- 2. Opérateur de Grover ---
+    # Utiliser GroverOperator gère automatiquement le Diffuseur et les phases globales
+    grover_op = GroverOperator(oracle)
 
-    # Build the full circuit: evaluation qubits (t_bits) + target register (G.num_qubits)
-    total_qubits = pe.num_qubits  # should equal t_bits + G.num_qubits
+    # --- 3. Phase Estimation ---
+    pe = PhaseEstimation(t_bits, grover_op)
+
+    # Le circuit total contient: t_bits (comptage) + n (recherche)
+    total_qubits = t_bits + n
     qc = QuantumCircuit(total_qubits, t_bits)
 
-    # Prepare target register in uniform superposition (indices t_bits ... total_qubits-1)
-    for q in range(t_bits, total_qubits):
+    # Préparation: Registre de recherche (n derniers qubits) en superposition uniforme |+>
+    # Note: Dans QPE, le registre d'état est après le registre de comptage
+    state_qubits = range(t_bits, total_qubits)
+    for q in state_qubits:
         qc.h(q)
 
-    # Append phase estimation circuit (it expects evaluation then target)
+    # Ajout du bloc Phase Estimation
     qc.append(pe, range(total_qubits))
 
-    # Measure evaluation (first t_bits)
+    # Mesure du registre de comptage (les t_bits premiers qubits)
     qc.measure(range(t_bits), range(t_bits))
 
-    # Run on QASM simulator (shots)
+    # --- 4. Simulation ---
     backend = AerSimulator()
+    # Transpile assure la compatibilité des portes
     t_qc = transpile(qc, backend)
     job = backend.run(t_qc, shots=shots)
-    result = job.result()
-    counts = result.get_counts()
-    return counts
+    
+    return job.result().get_counts()
