@@ -58,3 +58,32 @@ def quantum_counting(n, targets, t_bits=6, shots=4000, ancilla_qubits=0):
     job = backend.run(t_qc, shots=shots)
     
     return job.result().get_counts()
+
+def get_quantum_counting_circuit(n, targets, t_bits=3): # t_bits réduit à 3 pour minimiser le bruit
+    # 1. Oracle (Code repris de votre fichier src/quantum_counting.py)
+    oracle = QuantumCircuit(n)
+    for target in targets:
+        rev_target = target[::-1]
+        for i, bit in enumerate(rev_target):
+            if bit == '0': oracle.x(i)
+        oracle.h(n-1)
+        oracle.mcx(list(range(n-1)), n-1)
+        oracle.h(n-1)
+        for i, bit in enumerate(rev_target):
+            if bit == '0': oracle.x(i)
+
+    # 2. Grover Operator & QPE
+    grover_op = GroverOperator(oracle)
+    pe = PhaseEstimation(t_bits, grover_op)
+    
+    total_qubits = t_bits + n
+    qc = QuantumCircuit(total_qubits, t_bits)
+    
+    # Initialisation |+> sur les qubits de recherche
+    for q in range(t_bits, total_qubits):
+        qc.h(q)
+        
+    qc.append(pe, range(total_qubits))
+    qc.measure(range(t_bits), range(t_bits))
+    
+    return qc

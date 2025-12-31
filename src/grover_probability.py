@@ -93,7 +93,7 @@ def get_max_grover_success(n, p_error):
     # 4. Simulation
     backend = AerSimulator()
     # Transpilation nécessaire pour appliquer le bruit sur les portes natives
-    t_qc = transpile(qc, backend, basis_gates=noise_model.basis_gates if noise_model else None)
+    t_qc = transpile(qc, backend, basis_gates=noise_model.basis_gates if noise_model else None, optimization_level=3)
     
     # On augmente les shots pour avoir une bonne statistique
     shots = 2000

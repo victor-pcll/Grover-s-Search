@@ -2,6 +2,7 @@
 qiskit>=0.46.0
 qiskit-aer
 rustworkx>=0.17.1
+qiskit-ibm-runtime >=0.11.3
 
 # Python scientific stack
 numpy>=1.26.0

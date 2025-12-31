@@ -28,7 +28,7 @@ def counts_to_m(counts, n, t_bits):
     
     return m_est, measured_bin_reversed, phi
 
-def analyze_and_plot(counts, n, t_bits, m_expected):
+def analyze_and_plot(counts, n, t_bits, m_expected, plot_path="./asset"):
     N = 2**n
     
     # --- PRÉ-TRAITEMENT DES DONNÉES (INVERSION DES BITS) ---
@@ -75,6 +75,7 @@ def analyze_and_plot(counts, n, t_bits, m_expected):
     plt.legend()
     plt.xlim(0, 2**t_bits)
     plt.grid(alpha=0.3)
+    plt.savefig(f"{plot_path}/quantum_counting_corrected_n{n}_t{t_bits}.png")
     plt.show()
 
 def analyze_results(counts, t_bits, label="Données"):
