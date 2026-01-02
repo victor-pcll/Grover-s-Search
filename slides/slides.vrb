@@ -1,0 +1,23 @@
+\frametitle{3. Oracle Implementation Strategy}
+\textbf{Task:} Implement $f(x)=1$ for $m=1$ or $m=2$ targets.
+
+    We explored two approaches for the Multi-Controlled-X (MCX) gates:
+    \vspace{0.5cm}
+
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{A. With Ancilla Qubits}
+        \begin{itemize}
+            \item Uses extra qubits to decompose Toffoli gates.
+            \item \textbf{Pros:} Linear depth scaling $\mathcal{O}(n)$.
+            \item \textbf{Cons:} Requires more qubits.
+        \end{itemize}
+
+        \column{0.5\textwidth}
+        \textbf{B. Without Ancilla}
+        \begin{itemize}
+            \item Uses complex decompositions of MCX gates.
+            \item \textbf{Pros:} Saves qubits.
+            \item \textbf{Cons:} Depth grows exponentially, creating massive noise.
+        \end{itemize}
+    \end{columns}
