@@ -1,23 +1,32 @@
 \frametitle{3. Oracle Implementation Strategy}
-\textbf{Task:} Implement $f(x)=1$ for $m=1$ or $m=2$ targets.
+\textbf{Task:} Construct the marking function $f(x)$ for specific targets (e.g., $|111\rangle$).
 
-    We explored two approaches for the Multi-Controlled-X (MCX) gates:
-    \vspace{0.5cm}
+    \begin{columns}[t]
+        % --- OPTION A: NO ANCILLA ---
+        \column{0.45\textwidth}
+        \begin{block}{A. No Ancilla (\texttt{MCXGrayCode})}
+            Decomposes using relative phase and recursion.
+            \begin{itemize}
+                \item \textbf{Pros:} Minimizes qubit count (good for simulators).
+                \item \textbf{Cons:} \textcolor{red}{Quadratic Depth $\mathcal{O}(n^2)$}.
+            \end{itemize}
+            \vspace{0.1cm}
+            \centering
+            % Mettez ici une capture d'un circuit 'long' sans ancilla
+            \includegraphics[width=\textwidth, height=2cm]{../asset/mcx_gray_no_ancilla.png}
+        \end{block}
 
-    \begin{columns}
-        \column{0.5\textwidth}
-        \textbf{A. With Ancilla Qubits}
-        \begin{itemize}
-            \item Uses extra qubits to decompose Toffoli gates.
-            \item \textbf{Pros:} Linear depth scaling $\mathcal{O}(n)$.
-            \item \textbf{Cons:} Requires more qubits.
-        \end{itemize}
-
-        \column{0.5\textwidth}
-        \textbf{B. Without Ancilla}
-        \begin{itemize}
-            \item Uses complex decompositions of MCX gates.
-            \item \textbf{Pros:} Saves qubits.
-            \item \textbf{Cons:} Depth grows exponentially, creating massive noise.
-        \end{itemize}
+        % --- OPTION B: WITH ANCILLA ---
+        \column{0.45\textwidth}
+        \begin{block}{B. With Ancilla (\texttt{MCXVChain})}
+            Uses helper qubits (V-Chain) to break connections.
+            \begin{itemize}
+                \item \textbf{Pros:} \textcolor{green!60!black}{Linear Depth $\mathcal{O}(n)$}.
+                \item \textbf{Cons:} Requires extra qubits.
+            \end{itemize}
+            \vspace{0.1cm}
+            \centering
+            % Mettez ici une capture d'un circuit 'court' avec ancilla
+            \includegraphics[width=\textwidth, height=2cm]{../asset/mcx_vchain_with_ancilla.png}
+        \end{block}
     \end{columns}

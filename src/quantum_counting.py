@@ -59,31 +59,73 @@ def quantum_counting(n, targets, t_bits=6, shots=4000, ancilla_qubits=0):
     
     return job.result().get_counts()
 
-def get_quantum_counting_circuit(n, targets, t_bits=3): # t_bits réduit à 3 pour minimiser le bruit
-    # 1. Oracle (Code repris de votre fichier src/quantum_counting.py)
-    oracle = QuantumCircuit(n)
+def get_quantum_counting_circuit(n, targets, t_bits=3):
+    # --- 1. Gestion Intelligente des Ancillas ---
+    # Pour n=3 (2 contrôles), pas besoin d'ancilla.
+    # Pour n>=4, on utilise v-chain pour réduire la profondeur.
+    num_controls = n - 1
+    use_ancilla = num_controls >= 3 
+    
+    num_ancillas = max(0, num_controls - 2) if use_ancilla else 0
+    total_oracle_qubits = n + num_ancillas
+    
+    # Indices
+    work_qubits = list(range(n)) 
+    ancilla_qubits = list(range(n, total_oracle_qubits)) 
+    
+    # --- 2. Construction de l'Oracle ---
+    oracle = QuantumCircuit(total_oracle_qubits)
+    
     for target in targets:
         rev_target = target[::-1]
+        
+        # A. Flip des 0
         for i, bit in enumerate(rev_target):
-            if bit == '0': oracle.x(i)
-        oracle.h(n-1)
-        oracle.mcx(list(range(n-1)), n-1)
-        oracle.h(n-1)
+            if bit == '0': oracle.x(work_qubits[i])
+        
+        # B. Porte MCX (Conditionnelle)
+        target_qubit = work_qubits[-1]
+        control_qubits = work_qubits[:-1]
+        
+        oracle.h(target_qubit) # On passe en mode Phase (Z)
+        
+        if use_ancilla:
+            # Mode optimisé pour grands circuits
+            oracle.mcx(
+                control_qubits=control_qubits,
+                target_qubit=target_qubit,
+                ancilla_qubits=ancilla_qubits,
+                mode='v-chain'
+            )
+        else:
+            # Mode standard pour n=3 (Toffoli simple)
+            oracle.mcx(control_qubits, target_qubit)
+            
+        oracle.h(target_qubit) # Retour en mode Bit
+        
+        # C. Uncomputation
         for i, bit in enumerate(rev_target):
-            if bit == '0': oracle.x(i)
+            if bit == '0': oracle.x(work_qubits[i])
 
-    # 2. Grover Operator & QPE
-    grover_op = GroverOperator(oracle)
+    # --- 3. Grover Operator ---
+    # IMPORTANT: On ne diffuse QUE sur les qubits de travail
+    grover_op = GroverOperator(oracle, reflection_qubits=work_qubits)
+    
+    # --- 4. QPE ---
     pe = PhaseEstimation(t_bits, grover_op)
     
-    total_qubits = t_bits + n
-    qc = QuantumCircuit(total_qubits, t_bits)
+    # --- 5. Assemblage Final ---
+    grand_total = t_bits + total_oracle_qubits
+    qc = QuantumCircuit(grand_total, t_bits)
     
-    # Initialisation |+> sur les qubits de recherche
-    for q in range(t_bits, total_qubits):
+    # Init |+> sur les qubits de travail UNIQUEMENT
+    # Les ancillas restent à |0> (c'est crucial pour v-chain)
+    state_qubits_indices = range(t_bits, t_bits + n)
+    for q in state_qubits_indices:
         qc.h(q)
         
-    qc.append(pe, range(total_qubits))
+    qc.append(pe, range(grand_total))
+    
     qc.measure(range(t_bits), range(t_bits))
     
     return qc

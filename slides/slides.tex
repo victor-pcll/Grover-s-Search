@@ -25,6 +25,14 @@
 }
 \lstset{style=python}
 
+% --- Commande pour citation sans numéro ---
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
 % --- Thème ---
 \usetheme{Madrid}
 \usecolortheme{seahorse}
@@ -76,80 +84,53 @@
 \section{Theory: Grover $\&$ Counting}
 
 \begin{frame}{1. Grover's Algorithm: The Mechanism}
-    \textbf{Goal:} Find marked element(s) $x$ such that $f(x)=1$ in a database of size $N=2^n$.
+    \textbf{Goal:} Find marked element(s) $x$ such that $f(x)=1$ in an unsorted database of size $N=2^n$. (ex : Sudoku, Traveling Salesman Problem)
     
-    \vspace{0.5cm}
+    \vspace{0.3cm}
 
-    \begin{columns}
-        \column{0.55\textwidth}
-        The algorithm iterates the \textbf{Grover Operator} $G = (2|\psi\rangle\langle\psi| - I)O$:
-        \begin{itemize}
-            \item \textbf{Oracle ($O$):} Flips the phase of the solution $|x\rangle$.
-            \item \textbf{Diffuser:} Inversion about the mean.
-        \end{itemize}
-        
-        \vspace{0.2cm}
-        \textbf{Geometric Interpretation:}
-        Rotates the state vector by angle $\theta$ towards the target state $|\beta\rangle$.
-        $$ \theta \approx 2\sqrt{m/N} $$
-        
-        \column{0.45\textwidth}
-        \begin{center}
-            \includegraphics[width=0.6\textwidth]{../asset/grover_geometry.png}
-        \end{center}
-    \end{columns}
-\end{frame}
+    The algorithm iterates the \textbf{Grover Operator} $\hat{G} = (2|\psi\rangle\langle\psi| - I)\hat{O}$, where $|\psi\rangle = H^{\otimes n}|0\rangle$:
+    \begin{itemize}
+        \item \textbf{Oracle ($\hat{O}$):} Marks the solution by flipping its phase:$\hat{O}|x\rangle = (-1)^{f(x)}|x\rangle $
+        \item \textbf{Diffuser:} Performs an inversion about the mean amplitude, amplifying the probability of the marked state.
+    \end{itemize}
 
-\begin{frame}{Circuit Implementation ($n=3$)}
     \begin{center}
-        % L'image du circuit
-        \includegraphics[width=\textwidth, height=0.55\textheight, keepaspectratio]{../asset/circuit_grover_draw.png}
+        \includegraphics[width=0.60\textwidth]{../asset/circuit_grover.png}
     \end{center}
 
-    \vspace{0.2cm}
-
-    % Légende explicative alignée avec les étapes du circuit
-    \begin{columns}[t]
-        \column{0.33\textwidth}
-        \centering
-        \textbf{1. Initialization} \\
-        \footnotesize Apply $H^{\otimes n}$ to create equal superposition of all $N=8$ states.
-        
-        \column{0.33\textwidth}
-        \centering
-        \textbf{2. Oracle ($U_w$)} \\
-        \footnotesize Flips the phase of the target state (e.g., $|101\rangle$).
-        
-        \column{0.33\textwidth}
-        \centering
-        \textbf{3. Diffuser ($U_s$)} \\
-        \footnotesize Inversion about the mean. Increases amplitude of the marked state.
-    \end{columns}
+    % Citations
+    \blfootnote{\tiny L. K. Grover, Phys. Rev. Lett. \textbf{79}, 325 (1997).}
+    \blfootnote{\tiny M. A. Nielsen \& I. L. Chuang, \textit{Quantum Computation and Quantum Information} (2010).}
 \end{frame}
 
-\begin{frame}{Theoretical Performance}
-    \textbf{Number of Iterations:} 
-    To maximize the probability of measuring a marked state, perform:
-    $$ r \approx \frac{\pi}{4}\sqrt{\frac{N}{m}} $$
-    
-    \vspace{0.2cm}
-    \textbf{Probability of Success After $r$ Iterations:}
-    $ P_{\text{success}} = \sin^2\left((2r + 1)\frac{\theta}{2}\right) $
-    
-    \begin{columns}
-        \column{0.5\textwidth}
-        \textbf{Example:} $n=3$ ($N=8$), $m=1$:
-        \begin{itemize}
-            \item $\theta \approx 0.707$ radians.
-            \item Optimal iterations: $r \approx 1$.
-            \item $P_{\text{success}} \approx 1$.
-        \end{itemize}
+\begin{frame}{1. Grover's Algorithm: Geometric Picture}
 
-        \column{0.5\textwidth}
-        \begin{center}
-            \includegraphics[width=\textwidth]{../asset/grover_simulated_probability_n3_m1.png}
-        \end{center}
+    \textbf{Key Idea:}
+    Grover’s algorithm acts as a \textbf{rotation} in a 2D subspace,
+    progressively amplifying the target state.
+    
+    \begin{columns}[c]
+        \column{0.55\textwidth}
+        \begin{itemize}
+            \item The quantum state lives in the plane spanned by:
+            \begin{itemize}
+                \item $|\beta\rangle$: superposition of \textbf{solutions}
+                \item $|\alpha\rangle$: superposition of \textbf{non-solutions}
+            \end{itemize}
+            \item Each Grover iteration rotates the state by an angle $\theta$
+            \item After an optimal number of iterations, the state aligns with
+            $|\beta\rangle$
+            \item Optimal Number of Iterations: $r_{\text{opt}} \approx \frac{\pi}{4}\sqrt{\frac{N}{m}}$
+        \end{itemize}
+    
+        \column{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../asset/geom.png}
+        
+        \small
+        \textit{Rotation in the subspace spanned by $|\alpha\rangle$ and $|\beta\rangle$.}
     \end{columns}
+    
 \end{frame}
 
 % --- DÉPLACÉ ICI : La théorie du Counting AVANT les résultats ---
@@ -159,51 +140,28 @@
     \begin{block}{The Solution}
         Combine Grover operator $G$ with \textbf{Quantum Phase Estimation (QPE)}.
     \end{block}
-    
-    \begin{itemize}
-        \item The eigenvalues of $G$ are $e^{\pm i\theta}$.
-        \item QPE estimates the phase $\theta$.
-        \item Since $\sin(\theta/2) = \sqrt{m/N}$, we can deduce $m$:
-        $$ m \approx N \sin^2(\theta/2) $$
-    \end{itemize}
-\end{frame}
 
-\begin{frame}{Quantum Counting on Real Hardware (IBM Turing)}
-    % --- 1. Contexte Expérimental (Bandeau du haut) ---
-    \begin{block}{Experimental Setup}
-        \footnotesize
-        \begin{itemize}
-            \item \textbf{Backend:} \texttt{ibm\_turing} (127-qubit Eagle processor).
-            \item \textbf{Parameters:} $n=3$ (Search Space), 2000 Shots.
-            \item \textbf{Objective:} Estimate $m$ (number of solutions) via Phase Estimation.
-        \end{itemize}
-    \end{block}
-
-    \vspace{0.2cm}
-
-    % --- 2. Les Graphiques ---
-    \begin{columns}
-        \column{0.5\textwidth}
-        \centering
-        \textbf{Experiment A: 1 Solution} \\
-        \includegraphics[width=\textwidth, height=4cm, keepaspectratio]{../asset/IBM/counting_1.png}
-        \\ \tiny{Measured Phase Distribution ($m=1$)}
+    \begin{columns}[c] % [c] aligne verticalement le texte et l'image au centre
         
-        \column{0.5\textwidth}
-        \centering
-        \textbf{Experiment B: 2 Solutions} \\ % Ou changez le titre selon vos images
-        \includegraphics[width=\textwidth, height=4cm, keepaspectratio]{../asset/IBM/counting_2.png}
-        \\ \tiny{Measured Phase Distribution ($m=2$)}
+        % Colonne de gauche : Texte
+        \begin{column}{0.45\textwidth}
+            \begin{itemize}
+                \item $G$ has eigenvalues $e^{\pm i\theta}$.
+                \item \textbf{Phase Kickback} : transfer $\theta$ into the counting register.
+                \item \textbf{Inverse QFT} : reveals the phase $\theta$.
+                \item we measure $m$: $m \approx N \sin^2(\theta/2) $
+            \end{itemize}
+        \end{column}
+        
+        % Colonne de droite : Image
+        \begin{column}{0.45\textwidth}
+            \centering
+            % width=\textwidth ici signifie "100% de la largeur de la colonne" (donc 55% de la page)
+            \includegraphics[width=\textwidth]{../asset/circuit_quant_count.png}
+        \end{column}
+        
     \end{columns}
-
-    \vspace{0.3cm}
-
-    % --- 3. Observation / Conclusion ---
-    \begin{alertblock}{Analysis}
-        \footnotesize
-        Despite hardware noise (readout errors $\&$ decoherence), distinct peaks are visible.
-        The algorithm successfully identifies different phase values $\theta$ for different solution counts.
-    \end{alertblock}
+    \blfootnote{\tiny G. Brassard et al., \textit{Quantum Amplitude Amplification and Estimation}, arXiv:quant-ph/0005055 (2000).}
 \end{frame}
 
 % =========================================================
@@ -211,68 +169,151 @@
 % =========================================================
 \section{Complexity Analysis}
 
-\begin{frame}{2. Grover and Computational Complexity}
-    \textbf{Quadratic Speedup vs Exponential Speedup}
-    \begin{itemize}
-        \item Classical Search: $\mathcal{O}(N)$
-        \item Grover Search: $\mathcal{O}(\sqrt{N})$
-    \end{itemize}
-    
-    \vspace{0.5cm}
-    \textbf{Can Grover solve NP-Complete problems efficiently?}
-    \begin{alertblock}{Limitation}
-        NP-Complete problems (like SAT) have search spaces of size $N=2^n$.
-        \begin{itemize}
-            \item Brute force: $2^n$ operations.
-            \item Grover: $\sqrt{2^n} = 2^{n/2}$ operations.
-        \end{itemize}
-        While $2^{n/2}$ is a significant improvement, it is \textbf{still exponential}. Grover does not place NP-complete problems into the BQP class.
-    \end{alertblock}
-\end{frame}
-
-\begin{frame}{Failure of QPE on Real Hardware}
+\begin{frame}{2. Computational Complexity : Limits of Speedup}
     \begin{columns}
-        \column{0.4\textwidth}
-        \begin{center}
-            \includegraphics[width=\textwidth]{../asset/IBM/counting_qpe_1.png}
-        \end{center}
+        % --- Colonne Gauche : L'Optimalité (Théorie pure) ---
+        \column{0.5\textwidth}
+        \textbf{1. The Quadratic Speedup}
+        \begin{itemize}
+            \item Classical: $\mathcal{O}(N)$
+            \item Grover: $\mathcal{O}(\sqrt{N})$
+        \end{itemize}
         
-        \column{0.6\textwidth}
-        \small
-        \textbf{Observation:}
-        While Grover's Search ($\mathcal{O}(\sqrt{N})$ depth) yielded results on IBM Heron, Quantum Counting produced uniform noise.
+        \vspace{0.4cm}
+        
+        \textbf{2. Is further speedup possible?}
+        \begin{block}{BBBV Theorem (1997)}
+            Proven lower bound: Any quantum black-box search requires $\Omega(\sqrt{N})$ queries.
+        \end{block}
+        
+        \textbf{Consequence:} Grover is \textbf{asymptotically optimal}. We cannot do better than $\sqrt{N}$.
+
+        % --- Colonne Droite : Diagramme de Complexité (Visuel) ---
+        \column{0.5\textwidth}
+        \centering
+        \textbf{3. Can it solve NP-Complete?}
         
         \vspace{0.2cm}
-        \textbf{Why?}
-        \begin{itemize}
-            \item QPE requires applying Controlled-$G^{2^k}$.
-            \item Controlling the Grover operator drastically increases the CNOT count.
-            \item Total depth exceeds the qubit coherence time ($T_2$).
-        \end{itemize}
         
-        \begin{block}{Conclusion}
-             Gap between 'Search' (NISQ-friendly) and 'Estimation' (Requires Error Correction).
-        \end{block}
+        % Diagramme de Venn en TikZ
+        \begin{tikzpicture}[scale=0.7, every node/.style={scale=0.8}]
+            % Ellipse NP
+            \draw[fill=gray!10, thick] (0,0) ellipse (3cm and 2cm);
+            \node at (0, 1.5) {\textbf{NP Class}};
+            
+            % Ellipse P (Classical)
+            \draw[fill=green!20, opacity=0.7, thick] (-1, -0.5) circle (0.8cm);
+            \node[text=green!40!black] at (-1, -0.5) {\textbf{P}};
+            
+            % Points d'intérêt
+            \node[red] at (2.2, 0) {$\bullet$ \textbf{SAT}};
+            \node[red, align=left, font=\tiny] at (2.1, -0.3) {(NP-Complete)};
+            
+            \node[blue] at (-0.9, 0.5) {$\bullet$ \textbf{Grover}};
+        \end{tikzpicture}
+
+        \vspace{0.1cm}
+        \small
+        \begin{itemize}
+            \item Brute Force: $\mathcal{O}(2^n)$
+            \item Grover: $\mathcal{O}(2^{n/2})$
+        \end{itemize}
+        \scriptsize
+        $\rightarrow$ Still \textbf{Exponential}. Grover does \textit{not} solve NP-Complete efficiently.
+
+    \end{columns}
+
+    % Citation
+    \blfootnote{\tiny C. H. Bennett, E. Bernstein, G. Brassard, \& U. Vazirani, SIAM J. Comput. (1997).}
+\end{frame}
+
+\begin{frame}{3. Implementation of Grover's Algorithm}
+
+    % --- 2. Résultats Visuels ---
+    \begin{columns}[t]
+        % Cas 1 Solution
+        \begin{column}{0.5\textwidth}
+            \centering
+            \small
+            \textbf{Case A: 1 Solution} ($|101\rangle$) \\
+            \includegraphics[width=0.95\textwidth, height=3.5cm, keepaspectratio]{../asset/IBM/counting_1.png}
+            \vspace{-0.2cm}
+            \begin{center}
+                \tiny \textit{Clear peaks at phases corresponding to $m=1$ (ibm\_torino (133 qubits)).}
+            \end{center}
+        \end{column}
+        
+        % Cas 2 Solutions
+        \begin{column}{0.5\textwidth}
+            \centering
+            \small
+            \textbf{Case B: 2 Solutions} ($|101\rangle, |110\rangle$) \\
+            \includegraphics[width=0.95\textwidth, height=3.5cm, keepaspectratio]{../asset/IBM/counting_2.png}
+            \vspace{-0.2cm}
+            \begin{center}
+                \tiny \textit{Peaks shift location, indicating a larger angle $\theta$ (ibm\_torino (133 qubits)).}
+            \end{center}
+        \end{column}
+    \end{columns}
+
+    \begin{columns}[t]
+        \begin{column}{0.35\textwidth}
+            \begin{block}{Protocol}
+                \footnotesize
+                \begin{itemize}
+                    \item \textbf{System:} $n=3$ qubits ($N=8$).
+                    \item \textbf{Shots:} 2000 executions per circuit.
+                \end{itemize}
+            \end{block}
+        \end{column}
+
+        \begin{column}{0.60\textwidth}
+            \begin{alertblock}{Key Finding: Distinct Signatures}
+                \footnotesize
+                Despite hardware noise (decoherence), the algorithm successfully distinguishes the solution counts:
+            \end{alertblock}
+        \end{column}
     \end{columns}
 \end{frame}
 
-\begin{frame}{Quantum Counting Results (Simulation)}
-    \textbf{Setup:} 
-    \begin{itemize}
-        \item Search space: $n=3$ qubits ($N=8$).
-        \item Precision: $t=6$ counting qubits (allows distinguishing phases with accuracy $2^{-6}$).
-        \item Noise Model: Depolarizing error ($\epsilon = 10^{-5}$).
-    \end{itemize}
+\begin{frame}{3. QPE: The Depth Limit}
 
-    \begin{center}
-        % L'image occupe 75% de la hauteur dispo pour être bien visible
-        \includegraphics[height=0.55\textheight, keepaspectratio]{../asset/quantum_counting_ideal_vs_noisy_n3_t6.png}
-    \end{center}
-
-    \footnotesize
-    \textbf{Observation:} 
-    The dominant peak corresponds to the eigenvalue $\theta$. Using the formula $m \approx N \sin^2(\theta/2)$, the algorithm correctly identifies the number of solutions $m$, even with simulated noise.
+    % --- VISUAL COMPARISON ---
+    \begin{columns}[T]
+        \column{0.45\textwidth}
+        \centering
+        \textbf{\textcolor{blue}{Ideal Simulation}}
+        \includegraphics[height=3.6cm]{../asset/qpe_simu_n3_t6.png}
+        
+        \scriptsize
+        \textit{Well-resolved phase peaks  
+        ($n=3$, $t=6$, AerSimulator).}
+    
+        \column{0.45\textwidth}
+        \centering
+        \textbf{\textcolor{red}{Real Hardware}}
+        \includegraphics[height=3.6cm]{../asset/qpe_ibm_n3_t6.png}
+        
+        \scriptsize
+        \textit{Signal completely washed out  
+        ($n=3$, $t=6$, \texttt{ibm\_torino}).}
+    \end{columns}
+    
+    % --- ROOT CAUSE (SIMPLIFIED) ---
+    \begin{block}{Why does QPE fail on NISQ hardware?}
+        \footnotesize
+        \begin{itemize}
+            \item QPE applies controlled powers of Grover: $G^{2^k}$
+            \item Maximum circuit depth scales as:
+            \[
+                \text{Depth} \sim 2^{t_{\text{bits}}}
+            \]
+            \item Exponential depth $\Rightarrow$ coherence time $T_2$ is exceeded $\Rightarrow$ Quantum Counting is not NISQ-ready
+        \end{itemize}
+    \end{block}
+    
 \end{frame}
+
 
 % =========================================================
 % PARTIE 3: IMPLÉMENTATION (Requirement 3)
@@ -280,63 +321,82 @@
 \section{Implementation (Qiskit)}
 
 \begin{frame}[fragile]{3. Oracle Implementation Strategy}
-    \textbf{Task:} Implement $f(x)=1$ for $m=1$ or $m=2$ targets.
-    
-    We explored two approaches for the Multi-Controlled-X (MCX) gates:
-    \vspace{0.5cm}
-    
-    \begin{columns}
-        \column{0.5\textwidth}
-        \textbf{A. With Ancilla Qubits}
-        \begin{itemize}
-            \item Uses extra qubits to decompose Toffoli gates.
-            \item \textbf{Pros:} Linear depth scaling $\mathcal{O}(n)$.
-            \item \textbf{Cons:} Requires more qubits.
-        \end{itemize}
+    \textbf{Task:} Construct the marking function $f(x)$ for specific targets (e.g., $|111\rangle$).
+
+    \begin{columns}[t]
+        % --- OPTION A: NO ANCILLA ---
+        \column{0.45\textwidth}
+        \begin{block}{A. No Ancilla (\texttt{MCXGrayCode})}
+            Decomposes using relative phase and recursion.
+            \begin{itemize}
+                \item \textbf{Pros:} Minimizes qubit count (good for simulators).
+                \item \textbf{Cons:} \textcolor{red}{Quadratic Depth $\mathcal{O}(n^2)$}.
+            \end{itemize}
+            \vspace{0.1cm}
+            \centering
+            % Mettez ici une capture d'un circuit 'long' sans ancilla
+            \includegraphics[width=\textwidth, height=2cm]{../asset/mcx_gray_no_ancilla.png}
+        \end{block}
         
-        \column{0.5\textwidth}
-        \textbf{B. Without Ancilla}
-        \begin{itemize}
-            \item Uses complex decompositions of MCX gates.
-            \item \textbf{Pros:} Saves qubits.
-            \item \textbf{Cons:} Depth grows exponentially, creating massive noise.
-        \end{itemize}
+        % --- OPTION B: WITH ANCILLA ---
+        \column{0.45\textwidth}
+        \begin{block}{B. With Ancilla (\texttt{MCXVChain})}
+            Uses helper qubits (V-Chain) to break connections.
+            \begin{itemize}
+                \item \textbf{Pros:} \textcolor{green!60!black}{Linear Depth $\mathcal{O}(n)$}.
+                \item \textbf{Cons:} Requires extra qubits.
+            \end{itemize}
+            \vspace{0.1cm}
+            \centering
+            % Mettez ici une capture d'un circuit 'court' avec ancilla
+            \includegraphics[width=\textwidth, height=2cm]{../asset/mcx_vchain_with_ancilla.png}
+        \end{block}
     \end{columns}
 \end{frame}
 
 \begin{frame}{3. Hardware Complexity: The Cost of Connectivity}
-    \begin{columns}
-        % --- Colonne de Gauche : Graphique ---
-        \column{0.40\textwidth}
-        \centering
-        \includegraphics[width=\textwidth, height=0.75\textheight, keepaspectratio]{../asset/IBM/oracle_complexity_real_fixed.png}
+    
+    % --- 1. Setup en haut (Compact) ---
+    \centering
+    \scriptsize
+    \textbf{Setup:} Backend \texttt{ibm\_torino} (133-qubit) | Metric: Transpiled Depth (Log Scale)
+    
+    \vspace{0.3cm}
 
-        \vspace{0.2cm}
+    % --- 2. Image avec Annotations (TikZ) ---
+    \resizebox{0.47\textwidth}{!}{
+    \begin{tikzpicture}
+        % L'image sert de "noeud" de base
+        \node[anchor=south west, inner sep=0] (image) at (0,0) {
+            \includegraphics[width=0.75\textwidth, keepaspectratio]{../asset/IBM/oracle_complexity_real_with_errors}
+        };
+        
+        % Scope pour utiliser des coordonnées relatives (0,0 = bas-gauche, 1,1 = haut-droite de l'image)
+        \begin{scope}[x={(image.south east)}, y={(image.north west)}]
+            
+            % --- FLÈCHE ROUGE (No Ancilla) ---
+            % Ajuste les coordonnées (0.x, 0.y) selon la position de ta courbe rouge
+            % Ici : (0.35, 0.7) est le départ (texte), (0.45, 0.6) est la pointe
+            \draw[red, ultra thick, ->] (0.30, 0.75) -- (0.42, 0.65);
+            \node[text=red, font=\bfseries\footnotesize, align=left] at (0.30, 0.80) {Massive SWAP\\Overhead};
+            
+            % --- FLÈCHE VERTE (With Ancilla) ---
+            % Ajuste selon la position de ta courbe verte (souvent plus basse et plate)
+            \draw[green!60!black, ultra thick, ->] (0.55, 0.30) -- (0.45, 0.35);
+            \node[text=green!60!black, font=\bfseries\footnotesize, align=left] at (0.65, 0.30) {Linear Scaling\\$\mathcal{O}(n)$};
+            
+        \end{scope}
+    \end{tikzpicture}
+    }
 
-        \textbf{Experimental Setup:}
-        \begin{itemize}
-            \item \textbf{Backend:} \texttt{ibm\_torino} (133-qubit Heron).
-            \item \textbf{Metric:} Transpiled Depth (Log Scale).
-            \item \textbf{Optimization Level:} 3 (Max).
-        \end{itemize}
-        
-        % --- Colonne de Droite : Analyse ---
-        \column{0.55\textwidth}
-        
-        \textbf{Analysis:}
-        \begin{enumerate}
-            \item \textcolor{red}{\textbf{No Ancilla (Red):}} 
-            Uses \texttt{MCXGrayCode}. Depth grows exponentially.
-            \item \textcolor{green!60!black}{\textbf{With Ancilla (Green):}} 
-            Uses \texttt{MCXVChain}. Depth grows linearly.
-        \end{enumerate}
-        
-        \vspace{0.2cm}
-        
-        \begin{alertblock}{Key Finding}
-            Without ancillas, the transpiler must insert massive amounts of \textbf{SWAP gates} to satisfy the limited connectivity of the chip, making the circuit useless for $n > 5$.
-        \end{alertblock}
-    \end{columns}
+    \vspace{0.2cm}
+
+    % --- 3. Conclusion (Key Finding) ---
+    \begin{alertblock}{Key Finding: The Connectivity Bottleneck}
+        Without ancillas, the transpiler must insert massive SWAP chains to link distant qubits. 
+        This overhead causes the "No Ancilla" approach to hit the \textbf{$T_2$ coherence limit} as soon as $n > 5$.
+    \end{alertblock}
+
 \end{frame}
 
 % =========================================================
@@ -350,12 +410,7 @@
         \column{0.50\textwidth}
         \centering
         \includegraphics[width=\textwidth, height=0.75\textheight, keepaspectratio]{../asset/IBM/grover_oscillations_hardware_vs_theory.png}
-        \textbf{Experimental Protocol:}
-        \begin{itemize}
-            \item \textbf{Target:} $|111\rangle$ ($n=3$).
-            \item \textbf{Shots:} 2000 per iteration step.
-            \item \textbf{Transpilation:} Optimization Level 3 (Aggressive gate reduction).
-        \end{itemize}
+        Fig : ($n=3$, target = $|111\rangle$, shots = $2\;000$, ibm\_torino (133 qubits))
         
         % --- Colonne de Droite : Analyse ---
         \column{0.50\textwidth}
@@ -374,8 +429,10 @@
     Small $\theta/2 \approx \sqrt{m/N}$ implies large number of iterations $r$.
     $$ \text{Circuit Depth} \propto r \times \text{Oracle Depth} $$
     
+    \vspace{-0.7cm}
+
     \begin{columns}
-        \column{0.5\textwidth}
+        \column{0.4\textwidth}
         \textbf{Simulation Results:}
         \begin{itemize}
             \item For small $n$ ($n \le 4$): High fidelity.
@@ -383,47 +440,430 @@
             \item \textbf{Limit:} On current NISQ models, coherence time limits usage to small instances.
         \end{itemize}
         
-        \column{0.5\textwidth}
+        \column{0.55\textwidth}
         \begin{center}
-            \includegraphics[width=\textwidth]{../asset/IBM/grover_hardware_vs_simulation.png}
+            \includegraphics[width=\textwidth]{../asset/IBM/grover_hardware_vs_simulation_with_errors}\\
+            \small Fig.: Success probability of Grover’s algorithm versus qubit number $n$ on \texttt{ibm\_fez}, at optimal iterations without ancilla ($m=1$, target $|11\cdots11\rangle$).
         \end{center}
     \end{columns}
 \end{frame}
 
 \begin{frame}{4. Noise Impact: Stability Range Analysis}
-    \begin{columns}
-        % Colonne de gauche : Explications
-        \column{0.45\textwidth}
-        
-        \vspace{0.5cm}
-        \textbf{The "Tipping Point" (Red Boxes):}
-        \begin{itemize}
-            \item Highlighted cells indicate $P \approx 0.5$.
-            \item This is the \textbf{critical threshold}. Beyond this line (top-right), noise dominates the quantum signal.
-            \item \textbf{Observation:} For current hardware error rates ($\sim 10^{-2}$), we are limited to very small $n$.
-        \end{itemize}
-
-        % Colonne de droite : L'image
-        \column{0.55\textwidth}
         \begin{center}
-            \includegraphics[width=\textwidth]{../asset/grover_heatmap_stability_range.png}
+            \includegraphics[width=0.5\textwidth]{../asset/grover_heatmap_stability_range.png} \\
+            \small Fig.: Heatmap of the phase transition in Grover’s success probability versus qubit number $n$ and CNOT error rate, at optimal iterations without ancilla ($m=1$, target $|11\cdots 11\rangle$, AerSimulator).
         \end{center}
+\end{frame}
+
+\begin{frame}{Conclusion — What We Learn from Grover on NISQ}
+
+    \begin{columns}[T]
+    
+    % --- ORACLE ---
+    \column{0.30\textwidth}
+    \begin{block}{\centering Oracle Design}
+    \centering
+    \Large \textbf{Ancilla Required}
+    
+    \vspace{0.2cm}
+    \small
+    $n \ge 4 \; (m = 1)$
+    
+    \texttt{MCXVChain} \checkmark
+    
+    \vspace{0.1cm}
+    \textcolor{gray}{No-Ancilla \;\; $\times$}
+    \end{block}
+    
+    % --- THEORY ---
+    \column{0.30\textwidth}
+    \begin{block}{\centering Theory}
+    \centering
+    \Large \textbf{$\sqrt{N}$ Speedup}
+    
+    \vspace{0.2cm}
+    \small
+    Optimal, but still exponential
+    
+    \vspace{0.1cm}
+    \textcolor{gray}{NP-Complete $\notin$ BQP}
+    \end{block}
+    
+    % --- HARDWARE ---
+    \column{0.30\textwidth}
+    \begin{alertblock}{\centering Hardware}
+    \centering
+    \Large \textbf{Noise Wall}
+    
+    \vspace{0.2cm}
+    \small
+    $n \approx 6 \; (m = 1)$
+    
+    \vspace{0.1cm}
+    $Depth > T_2$
+    \end{alertblock}
+    
+    \end{columns}
+    
+    \vspace{0.4cm}
+    
+    \centering
+    \Large
+    \textbf{{Grover is optimal — but not scalable on NISQ hardware}}
+    
+    \vspace{0.3cm}
+    \small
+    Error correction is required for meaningful scaling
+    
+\end{frame}
+
+\begin{frame}
+    \centering \Huge \textbf{Annexes}
+\end{frame}
+
+\begin{frame}{A.1. Grover: Theory and Optimal Performance}
+
+    \footnotesize
+    
+    \textbf{Subspace Definitions:}
+    For $m$ solutions in a database of size $N = 2^n$:
+    \begin{align*}
+        |\beta\rangle &= \frac{1}{\sqrt{m}} \sum_{x \in S} |x\rangle \qquad
+        |\alpha\rangle = \frac{1}{\sqrt{N-m}} \sum_{x \notin S} |x\rangle
+    \end{align*}
+    
+    \textbf{Initial State Decomposition:}
+    $|\psi\rangle = \cos(\theta/2)|\alpha\rangle + \sin(\theta/2)|\beta\rangle,
+    \quad
+    \theta = 2\arcsin\!\left(\sqrt{\frac{m}{N}}\right)$
+    
+    \textbf{Success Probability:} $P(r) = \sin^2\!\left((2r+1)\frac{\theta}{2}\right)$
+    \textbf{Optimal Number of Iterations:}$r_{\text{opt}} \approx \frac{\pi}{4}\sqrt{\frac{N}{m}}$
+    
+    \begin{columns}[c]
+        \column{0.55\textwidth}
+        \textbf{Example:} $n=3$, $m=1$
+        \begin{itemize}
+            \item $r_{\text{opt}} \approx 2$
+            \item $P_{\text{success}} \approx 0.945$
+        \end{itemize}
+    
+        \column{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../asset/grover_simulated_probability_n3_m1.png}
+        
+        \tiny
+        \textit{Theoretical success probability vs Grover iterations.}
+    \end{columns}
+    
+    \end{frame}
+
+\begin{frame}{A.2. Quantum Phase Estimation (QPE) : Ideal vs Noisy Simulation}
+    \begin{columns}[c]
+        % --- Colonne Gauche : Paramètres & Analyse ---
+        \column{0.45\textwidth}
+            \begin{block}{Simulation Setup}
+                \footnotesize
+                \begin{itemize}
+                    \item \textbf{System:} $n=3$, $m=1$ solutions.
+                    \item \textbf{Precision:} $t=6$ qubits.
+                    \item \textbf{Noise:} Depolarizing ($\epsilon = 10^{-5}$).
+                \end{itemize}
+            \end{block}
+            
+            \vspace{0.3cm}
+            
+            \textbf{Spectral Interpretation:}
+            \footnotesize
+            The Grover operator $G$ acts as a rotation in a 2D subspace, possessing conjugate eigenvalues $e^{\pm i\theta}$.
+            QPE projects the state onto both eigenphases:
+            \begin{itemize}
+                \item Peak 1: $\phi_1 \approx \theta \rightarrow$ integer $j$
+                \item Peak 2: $\phi_2 \approx 2\pi - \theta \rightarrow$ integer $2^t - j$
+            \end{itemize}
+            
+            \vspace{0.2cm}
+            \textbf{Solution Invariance:}
+            Due to the symmetry $\sin^2(x) = \sin^2(\pi-x)$, both peaks yield the exact same count:
+            $$ m = N \sin^2\left(\frac{\theta}{2}\right) = N \sin^2\left(\frac{2\pi - \theta}{2}\right) $$
+
+        % --- Colonne Droite : Graphique ---
+        \column{0.55\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{../asset/quantum_counting_ideal_vs_noisy_n3_t6.png}
+            
+            \vspace{0.1cm}
+            \scriptsize \textit{Fig: Number of targets ($m$). The two symmetric peaks physically correspond to the forward and backward rotation of the Grover operator. ($n = 3, j = \{6, 58\}, \text{shots }=  2\;000$, AerSimulator())}
     \end{columns}
 \end{frame}
 
-% ---------------------------------------------------------
-% CONCLUSION
-% ---------------------------------------------------------
-\begin{frame}{Conclusion}
-    \begin{itemize}
-        \setlength\itemsep{1em}
-        \item \textbf{Verification:} We successfully verified Grover's quadratic speedup and the ability to estimate $m$ via Quantum Counting.
-        \item \textbf{Implementation Trade-offs:} Using Ancilla qubits is crucial on real hardware to keep circuit depth manageable.
-        \item \textbf{Hardware Limits:} Noise analysis shows that Grover's algorithm requires deep circuits, making it challenging for current NISQ devices beyond small $n$.
-    \end{itemize}
+\begin{frame}{A.3. Grover vs. Shor Strategy}
+    \begin{columns}[t]
+        
+        % --- Colonne Grover (Le Généraliste) ---
+        \column{0.45\textwidth}
+        \begin{block}{Grover's Algorithm}
+            \centering \textbf{The "Brute Force" Booster}
+            \vspace{0.2cm}
+            \begin{itemize}
+                \item \textbf{Problem:} Unstructured Search (Database, SAT).
+                \item \textbf{Structure:} None (Black Box).
+                \item \textbf{Speedup:} \textcolor{blue}{\textbf{Quadratic}} $\mathcal{O}(\sqrt{N})$.
+                \item \textbf{Impact:} Optimizes search but does \textbf{not} break NP-Complete barriers.
+            \end{itemize}
+        \end{block}
+
+        % --- Colonne Shor (Le Spécialiste) ---
+        \column{0.45\textwidth}
+        \begin{alertblock}{Shor's Algorithm}
+            \centering \textbf{The "Code Breaker"}
+            \vspace{0.2cm}
+            \begin{itemize}
+                \item \textbf{Problem:} Factorization (RSA), Period Finding.
+                \item \textbf{Structure:} Exploits \textbf{Periodicity} $f(x) = f(x+r)$.
+                \item \textbf{Speedup:} \textcolor{red}{\textbf{Exponential}} $\mathcal{O}(\text{poly}(\log N))$.
+                \item \textbf{Impact:} Solves Factorization efficiently (In BQP).
+            \end{itemize}
+        \end{alertblock}
+        
+    \end{columns}
+
+    \vspace{0.5cm}
+
+    % --- Le concept clé en bas ---
+    \begin{center}
+        \textbf{Key Difference:}
+        \textit{"Grover speeds up the checking process. Shor cheats by finding the hidden mathematical structure."}
+    \end{center}
+\end{frame}
+
+\begin{frame}{A.4. From Grover to Digital Quantum Simulation}
     
-    \vspace{1cm}
-    \centering \Large \textbf{Thank you for your attention.}
+    \begin{columns}[t]
+        % --- Colonne 1 : Ton Projet (Quantum Counting) ---
+        \column{0.45\textwidth}
+        \begin{block}{1. My Project (Quantum Counting)}
+            \textbf{Goal:} Find the number of solutions $m$.
+            \vspace{0.2cm}
+            \begin{itemize}
+                \item \textbf{Operator:} Grover Iterate $G$.
+                \item \textbf{Eigenvalues:} Encoded in phase $\theta$.
+                \item \textbf{Relation:}
+                $ G|\psi\rangle = e^{\pm i\theta}|\psi\rangle $
+                $$ m \approx N \sin^2(\theta/2) $$
+            \end{itemize}
+        \end{block}
+
+        % --- Colonne 2 : DQS (Physique/Chimie) ---
+        \column{0.45\textwidth}
+        \begin{alertblock}{2. Digital Quantum Simulation}
+            \textbf{Goal:} Find molecular energy $E$.
+            \vspace{0.2cm}
+            \begin{itemize}
+                \item \textbf{Operator:} Time Evolution $U = e^{-iHt}$.
+                \item \textbf{Eigenvalues:} Encoded in energy.
+                \item \textbf{Relation:}
+                $ U|\psi\rangle = e^{-iEt}|\psi\rangle $
+                $$ \text{Phase } \phi \propto \text{Energy } E $$
+            \end{itemize}
+        \end{alertblock}
+    \end{columns}
+
+    \vspace{0.1cm}
+
+    \centering
+
+    \begin{tikzpicture}[node distance=2cm, auto, scale=0.8, every node/.style={transform shape}]
+        % Boite centrale QPE
+        \node[draw, fill=yellow!20, minimum width=4cm, minimum height=1cm, rounded corners] (qpe) {\textbf{QPE Algorithm} ($QFT^\dagger$)};
+        
+        % Flèches entrantes
+        \node[above left of=qpe, node distance=2.5cm, align=center] (grover) {Grover Operator : $G$};
+        \node[above right of=qpe, node distance=2.5cm, align=center] (sim) {Hamiltonian : $e^{-iHt}$};
+        
+        \draw[->, thick, blue] (grover) -- node[left, font=\tiny] {Input} (qpe);
+        \draw[->, thick, red] (sim) -- node[right, font=\tiny] {Input} (qpe);
+        
+        % Flèches sortantes
+        \node[below left of=qpe, node distance=2.0cm] (sol) {Solutions ($m$)};
+        \node[below right of=qpe, node distance=2.0cm] (nrj) {Energy ($E$)};
+        
+        \draw[->, thick, blue] (qpe) -- (sol);
+        \draw[->, thick, red] (qpe) -- (nrj);
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{A.5. Future Work: Scaling Grover with QEC}
+    \begin{columns}[t]
+        % --- Colonne Gauche : Le Constat (Votre Projet) ---
+        \column{0.45\textwidth}
+        \begin{block}{1. The Current Obstacle (NISQ)}
+            \textbf{Observation:} My project failed at $n > 6$.
+            \begin{itemize}
+                \item \textbf{Reason:} Grover depth scales as $\mathcal{O}(\sqrt{2^n})$.
+                \item \textbf{Physics:} Circuit duration $> T_2$ (Coherence time).
+                \item \textbf{Result:} Iterations destroy the quantum state before amplification finishes.
+            \end{itemize}
+        \end{block}
+
+        % --- Colonne Droite : La Solution (QEC) ---
+        \column{0.45\textwidth}
+        \begin{exampleblock}{2. The Solution (Fault Tolerance)}
+            \textbf{Goal:} Make "Effective $T_2$" infinite.
+            \begin{itemize}
+                \item \textbf{Logical Qubits:} Encode 1 logical qubit into $k$ physical qubits (e.g., Surface Code).
+                \item \textbf{Active Correction:} Insert \textbf{Stabilizer Checks} between Grover iterations.
+            \end{itemize}
+        \end{exampleblock}
+    \end{columns}
+
+    \vspace{0.3cm}
+
+    % --- Schéma du concept : Grover Logique ---
+    \centering
+    \textbf{Proposed Architecture: The "Logical" Grover Circuit}
+    
+    \resizebox{0.9\textwidth}{!}{
+    \begin{tikzpicture}[node distance=2cm, auto, thick]
+        % Ligne de temps
+        \draw[->, gray, thick] (0,0) -- (12,0) node[right] {Time};
+
+        % Bloc 1 : Oracle
+        \node[draw, fill=blue!20, minimum height=1cm, minimum width=1.5cm] (oracle) at (1.5, 0.8) {Oracle $O$};
+        
+        % Bloc 2 : QEC Cycle
+        \node[draw, fill=green!10, dashed, minimum height=1.2cm, minimum width=2cm, align=center] (qec1) at (4.5, 0.8) {\textbf{QEC Cycle}\\(Syndrome\\Meas.)};
+        
+        % Bloc 3 : Diffuser
+        \node[draw, fill=blue!20, minimum height=1cm, minimum width=1.5cm] (diff) at (7.5, 0.8) {Diffuser $D$};
+
+        % Bloc 4 : QEC Cycle
+        \node[draw, fill=green!10, dashed, minimum height=1.2cm, minimum width=2cm, align=center] (qec2) at (10.5, 0.8) {\textbf{QEC Cycle}\\(Correction)};
+
+        % Flèches de flux
+        \draw[->] (oracle) -- (qec1);
+        \draw[->] (qec1) -- (diff);
+        \draw[->] (diff) -- (qec2);
+        
+        % Légende du bas
+        \node[align=center, font=\small] at (6, -0.8) {\textit{Stabilizers remove entropy generated during Oracle/Diffuser steps}};
+    \end{tikzpicture}
+    }
+
+    \vspace{0.2cm}
+    \footnotesize
+    \textbf{Cost:} A single logical qubit might require $\sim 1000$ physical qubits (Surface Code).
+\end{frame}
+
+\begin{frame}{A.6. The NISQ Alternatives (VQE \& QAOA)}
+    \centering
+    \textbf{Hybrid Algorithms: Pairing Classical Optimization with Quantum Evaluation}
+
+    \begin{columns}[t]
+        % --- Colonne Gauche : Le Concept Hybride ---
+        \column{0.40\textwidth}
+        \begin{block}{The Mechanism (Hybrid Loop)}
+            Quantum Processor acts as a co-processor (GPU).
+            \begin{enumerate}
+                \item \textbf{Classical CPU:} Sends parameters $\theta$.
+                \item \textbf{Quantum QPU:} Prepares state $|\psi(\theta)\rangle$ and measures Cost $C$.
+                \item \textbf{Classical CPU:} Updates $\theta$ to minimize $C$ (Gradient Descent).
+            \end{enumerate}
+            \textit{Advantage: Short depth, noise resilience.}
+        \end{block}
+
+        % --- Colonne Droite : Les deux champions ---
+        \column{0.50\textwidth}
+        \begin{exampleblock}{1. VQE (Chemistry)}
+            \textbf{Variational Quantum Eigensolver}
+            \begin{itemize}
+                \item \textbf{Goal:} Find Ground State Energy.
+                \item \textbf{Use Case:} Drug discovery, Material science.
+                \item \textit{Alternative to Phase Estimation.}
+            \end{itemize}
+        \end{exampleblock}
+
+        \begin{alertblock}{2. QAOA (Optimization)}
+            \textbf{Quantum Approx. Optimization Algo}
+            \begin{itemize}
+                \item \textbf{Goal:} Solve combinatorial problems (MaxCut, TSP).
+                \item \textbf{Structure:} Alternating "Cost" and "Mixer" layers.
+            \end{itemize}
+        \end{alertblock}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{1. Grover's Algorithm: Geometric Interpretation}
+
+    \textbf{Geometric Interpretation:}
+    Rotates the state vector by angle $\theta$ towards the target state $|\beta\rangle$.
+    
+    \begin{columns}[c]
+        % --- Colonne Gauche : Mathématiques Rigoureuses ---
+        \begin{column}{0.6\textwidth}
+            \footnotesize % On réduit la police pour faire tenir les maths
+            
+            \textbf{1. Subspace Definitions:}
+            Let $S$ be the set of $m$ solutions. We define the normalized basis states:
+            \begin{align*}
+                |\beta\rangle &= \frac{1}{\sqrt{m}} \sum_{x \in S} |x\rangle \quad \text{(Target superpos.)} \\
+                |\alpha\rangle &= \frac{1}{\sqrt{N-m}} \sum_{x \notin S} |x\rangle \quad \text{(Non-target)}
+            \end{align*}
+    
+            \textbf{2. Initial State Decomposition:}
+            The initial state $|\psi\rangle = H^{\otimes n}|0\rangle$ lies in the plane spanned by $|\alpha\rangle$ and $|\beta\rangle$:
+            $$ |\psi\rangle = \sqrt{\frac{N-m}{N}}|\alpha\rangle + \sqrt{\frac{m}{N}}|\beta\rangle $$
+            $$ |\psi\rangle = \cos(\theta/2)|\alpha\rangle + \sin(\theta/2)|\beta\rangle $$
+            
+            \textbf{3. Geometric Action:}
+            The Grover operator $G$ performs a rotation of angle $\theta$ in this 2D plane:
+            $$ \theta = 2\arcsin(\sqrt{m/N}) \approx 2\sqrt{m/N} $$
+        \end{column}
+    
+        % --- Colonne Droite : Figure ---
+        \begin{column}{0.35\textwidth}
+            \begin{center}
+                \includegraphics[width=\textwidth]{../asset/geom.png}
+            \end{center}
+            \vspace{-0.5cm}
+            \centering \small \textit{Fig: Geometric interpretation of the rotation in the subspace spanned by $|\alpha\rangle$ and $|\beta\rangle$.}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{1. Grover's Algorithm: Theoretical Performance}
+    \textbf{Number of Iterations:} 
+    To maximize the probability of measuring a marked state, perform:
+    $$ r \approx \frac{\pi}{4}\sqrt{\frac{N}{m}} $$
+    
+    \vspace{-0.2cm}
+    \small
+    \begin{itemize}
+        \item \textbf{Constraint:} Knowing $m$ is required to stop at the peak.
+        \item \textbf{Link to Project:} This motivates \textbf{Quantum Counting} to estimate $m$ when unknown, preventing over-rotation.
+    \end{itemize}
+    \normalsize
+    
+    \begin{columns}[c]
+        % --- Colonne Gauche : Formules & Exemple ---
+        \column{0.55\textwidth}
+            \textbf{Probability of Success:}
+            $$ P(r) = \sin^2\left((2r + 1)\frac{\theta}{2}\right) $$
+            
+            \vspace{0.2cm}
+            \textbf{Example:} $n=3$ ($N=8$), $m=1$:
+            \begin{itemize}
+                \item $r_{\text{opt}} \approx 2$ iterations.
+                \item $P_{\text{success}} \approx 0.9453 $.
+            \end{itemize}
+
+        % --- Colonne Droite : Graphique & Légende ---
+        \column{0.40\textwidth}
+            \begin{center}
+                \includegraphics[width=\textwidth]{../asset/grover_simulated_probability_n3_m1.png}
+                \tiny Fig : Probability of measuring the target state $|101\rangle$ vs number of Grover iterations $r$ for $n=3$, $m=1$.
+            \end{center}
+    \end{columns}
 \end{frame}
 
 \end{document}

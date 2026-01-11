@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  31 DEC 2025 21:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  11 JAN 2026 18:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -644,24 +644,24 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 ) (./slides.aux)
 \openout1 = `slides.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -716,64 +716,64 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 48.
+Package hyperref Info: Link coloring OFF on input line 56.
  (./slides.out) (./slides.out)
 \@outlinefile=\write5
 \openout5 = `slides.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 48.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 56.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 48.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 56.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 48.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 48.
+(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 56.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 56.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> T1/cmss/b/n on input line 48.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/b/n on input line 56.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> T1/cmss/b/n on input line 48.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 48.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/b/n on input line 56.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 56.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 48.
+(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 56.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/cmss/m/n on input line 48.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 48.
+(Font)                  OT1/cmss/bx/n --> T1/cmss/m/n on input line 56.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 56.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> T1/cmss/m/it on input line 48.
+(Font)                  OT1/cmr/m/it --> T1/cmss/m/it on input line 56.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> T1/cmss/m/it on input line 48.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 48.
+(Font)                  OT1/cmr/bx/it --> T1/cmss/m/it on input line 56.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 56.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 48.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 56.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 48.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 56.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/cmss/m/n --> T1/cmss/b/n on input line 48.
+(Font)                  T1/cmss/m/n --> T1/cmss/b/n on input line 56.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/cmss/m/it --> T1/cmss/b/it on input line 48.
+(Font)                  T1/cmss/m/it --> T1/cmss/b/it on input line 56.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> T1/cmr/b/n on input line 48.
+(Font)                  OT1/cmss/b/n --> T1/cmr/b/n on input line 56.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/cmss/b/n --> T1/cmss/b/n on input line 48.
+(Font)                  T1/cmss/b/n --> T1/cmss/b/n on input line 56.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/cmss/m/n --> T1/cmss/b/n on input line 48.
+(Font)                  T1/cmss/m/n --> T1/cmss/b/n on input line 56.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/cmss/m/it --> T1/cmss/b/it on input line 48.
+(Font)                  T1/cmss/m/it --> T1/cmss/b/it on input line 56.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/cmtt/m/n --> T1/cmtt/b/n on input line 48.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 48.
+(Font)                  T1/cmtt/m/n --> T1/cmtt/b/n on input line 56.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 56.
 LaTeX Font Info:    Encoding `T1' has changed to `OT1' for symbol font
-(Font)              `pureletters' in the math version `normal' on input line 48.
+(Font)              `pureletters' in the math version `normal' on input line 56.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  T1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 48.
+(Font)                  T1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 56.
 LaTeX Font Info:    Encoding `T1' has changed to `OT1' for symbol font
-(Font)              `pureletters' in the math version `bold' on input line 48.
+(Font)              `pureletters' in the math version `bold' on input line 56.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 48.
+(Font)                  T1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 56.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 48.
+(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 56.
  (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
 ) (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/translator/translator-bibliography-dictionary-English.dict
@@ -789,15 +789,15 @@ Dictionary: translator-theorem-dictionary, Language: English
 )
 \c@lstlisting=\count371
  (./slides.nav)
-LaTeX Font Info:    Trying to load font information for U+msa on input line 48.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 56.
  (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 48.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 56.
  (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 48.
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 56.
  (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
@@ -811,146 +811,202 @@ File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mat
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 76.
+(hyperref)                removing `math shift' on input line 84.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 76.
+(hyperref)                removing `math shift' on input line 84.
 
-<../asset/grover_geometry.png, id=70, 626.34pt x 663.47874pt>
-File: ../asset/grover_geometry.png Graphic file (type png)
-<use ../asset/grover_geometry.png>
-Package pdftex.def Info: ../asset/grover_geometry.png  used on input line 101.
-(pdftex.def)             Requested size: 117.51761pt x 124.48294pt.
+<../asset/circuit_grover.png, id=70, 588.1975pt x 217.81375pt>
+File: ../asset/circuit_grover.png Graphic file (type png)
+<use ../asset/circuit_grover.png>
+Package pdftex.def Info: ../asset/circuit_grover.png  used on input line 104.
+(pdftex.def)             Requested size: 261.15202pt x 96.70578pt.
 
 
 [3
 
- <../asset/grover_geometry.png>]
-<../asset/circuit_grover_draw.png, id=83, 1267.8567pt x 916.8654pt>
-File: ../asset/circuit_grover_draw.png Graphic file (type png)
-<use ../asset/circuit_grover_draw.png>
-Package pdftex.def Info: ../asset/circuit_grover_draw.png  used on input line 128.
-(pdftex.def)             Requested size: 186.20439pt x 134.65587pt.
+ <../asset/circuit_grover.png>]
+<../asset/geom.png, id=89, 461.725pt x 365.365pt>
+File: ../asset/geom.png Graphic file (type png)
+<use ../asset/geom.png>
+Package pdftex.def Info: ../asset/geom.png  used on input line 134.
+(pdftex.def)             Requested size: 174.09692pt x 137.76416pt.
 
 
 [4
 
- <../asset/circuit_grover_draw.png>]
-<../asset/grover_simulated_probability_n3_m1.png, id=97, 578.16pt x 361.35pt>
-File: ../asset/grover_simulated_probability_n3_m1.png Graphic file (type png)
-<use ../asset/grover_simulated_probability_n3_m1.png>
-Package pdftex.def Info: ../asset/grover_simulated_probability_n3_m1.png  used on input line 153.
-(pdftex.def)             Requested size: 217.62448pt x 136.01318pt.
-
-Overfull \vbox (0.1512pt too high) detected at line 153
- []
-
+ <../asset/geom.png>]
+<../asset/circuit_quant_count.png, id=119, 618.31pt x 422.57875pt>
+File: ../asset/circuit_quant_count.png Graphic file (type png)
+<use ../asset/circuit_quant_count.png>
+Package pdftex.def Info: ../asset/circuit_quant_count.png  used on input line 165.
+(pdftex.def)             Requested size: 195.8607pt x 133.86098pt.
 
 
 [5
 
- <../asset/grover_simulated_probability_n3_m1.png>]
+ <../asset/circuit_quant_count.png>]
 
 [6
 
 ]
-<../asset/IBM/counting_1.png, id=144, 462.528pt x 346.896pt>
+<../asset/IBM/counting_1.png, id=152, 462.528pt x 346.896pt>
 File: ../asset/IBM/counting_1.png Graphic file (type png)
 <use ../asset/IBM/counting_1.png>
-Package pdftex.def Info: ../asset/IBM/counting_1.png  used on input line 207.
-(pdftex.def)             Requested size: 151.74544pt x 113.80908pt.
-<../asset/IBM/counting_2.png, id=145, 462.528pt x 346.896pt>
+Package pdftex.def Info: ../asset/IBM/counting_1.png  used on input line 277.
+(pdftex.def)             Requested size: 132.77461pt x 99.58096pt.
+<../asset/IBM/counting_2.png, id=153, 462.528pt x 346.896pt>
 File: ../asset/IBM/counting_2.png Graphic file (type png)
 <use ../asset/IBM/counting_2.png>
-Package pdftex.def Info: ../asset/IBM/counting_2.png  used on input line 207.
-(pdftex.def)             Requested size: 151.74544pt x 113.80908pt.
-
-Overfull \vbox (50.31766pt too high) detected at line 207
- []
-
+Package pdftex.def Info: ../asset/IBM/counting_2.png  used on input line 277.
+(pdftex.def)             Requested size: 132.77461pt x 99.58096pt.
 
 
 [7
 
  <../asset/IBM/counting_1.png> <../asset/IBM/counting_2.png>]
+<../asset/qpe_simu_n3_t6.png, id=195, 722.7pt x 433.62pt>
+File: ../asset/qpe_simu_n3_t6.png Graphic file (type png)
+<use ../asset/qpe_simu_n3_t6.png>
+Package pdftex.def Info: ../asset/qpe_simu_n3_t6.png  used on input line 315.
+(pdftex.def)             Requested size: 170.71672pt x 102.43008pt.
+<../asset/qpe_ibm_n3_t6.png, id=196, 722.7pt x 433.62pt>
+File: ../asset/qpe_ibm_n3_t6.png Graphic file (type png)
+<use ../asset/qpe_ibm_n3_t6.png>
+Package pdftex.def Info: ../asset/qpe_ibm_n3_t6.png  used on input line 315.
+(pdftex.def)             Requested size: 170.71672pt x 102.43008pt.
+
 
 [8
 
-]
-<../asset/IBM/counting_qpe_1.png, id=194, 462.528pt x 346.896pt>
-File: ../asset/IBM/counting_qpe_1.png Graphic file (type png)
-<use ../asset/IBM/counting_qpe_1.png>
-Package pdftex.def Info: ../asset/IBM/counting_qpe_1.png  used on input line 257.
-(pdftex.def)             Requested size: 174.09692pt x 130.57265pt.
+ <../asset/qpe_simu_n3_t6.png> <../asset/qpe_ibm_n3_t6.png>]
+\openout4 = `slides.vrb'.
 
+ (./slides.vrb
+<../asset/mcx_gray_no_ancilla.png, id=221, 1244.4894pt x 823.878pt>
+File: ../asset/mcx_gray_no_ancilla.png Graphic file (type png)
+<use ../asset/mcx_gray_no_ancilla.png>
+Package pdftex.def Info: ../asset/mcx_gray_no_ancilla.png  used on input line 16.
+(pdftex.def)             Requested size: 195.8562pt x 56.89792pt.
+<../asset/mcx_vchain_with_ancilla.png, id=234, 1244.4894pt x 730.8906pt>
+File: ../asset/mcx_vchain_with_ancilla.png Graphic file (type png)
+<use ../asset/mcx_vchain_with_ancilla.png>
+Package pdftex.def Info: ../asset/mcx_vchain_with_ancilla.png  used on input line 30.
+(pdftex.def)             Requested size: 195.8562pt x 56.89993pt.
+)
 
 [9
 
- <../asset/IBM/counting_qpe_1.png>]
-<../asset/quantum_counting_ideal_vs_noisy_n3_t6.png, id=221, 867.24pt x 433.62pt>
-File: ../asset/quantum_counting_ideal_vs_noisy_n3_t6.png Graphic file (type png)
-<use ../asset/quantum_counting_ideal_vs_noisy_n3_t6.png>
-Package pdftex.def Info: ../asset/quantum_counting_ideal_vs_noisy_n3_t6.png  used on input line 275.
-(pdftex.def)             Requested size: 269.31801pt x 134.65663pt.
-
-Overfull \vbox (0.87234pt too high) detected at line 275
- []
-
+ <../asset/mcx_gray_no_ancilla.png> <../asset/mcx_vchain_with_ancilla.png>]
+<../asset/IBM/oracle_complexity_real_with_errors.png, id=258, 722.7pt x 433.62pt>
+File: ../asset/IBM/oracle_complexity_real_with_errors.png Graphic file (type png)
+<use ../asset/IBM/oracle_complexity_real_with_errors.png>
+Package pdftex.def Info: ../asset/IBM/oracle_complexity_real_with_errors.png  used on input line 400.
+(pdftex.def)             Requested size: 326.43672pt x 195.86162pt.
 
 
 [10
 
- <../asset/quantum_counting_ideal_vs_noisy_n3_t6.png>]
-\openout4 = `slides.vrb'.
+ <../asset/IBM/oracle_complexity_real_with_errors.png>]
+<../asset/IBM/grover_oscillations_hardware_vs_theory.png, id=280, 722.7pt x 433.62pt>
+File: ../asset/IBM/grover_oscillations_hardware_vs_theory.png Graphic file (type png)
+<use ../asset/IBM/grover_oscillations_hardware_vs_theory.png>
+Package pdftex.def Info: ../asset/IBM/grover_oscillations_hardware_vs_theory.png  used on input line 425.
+(pdftex.def)             Requested size: 217.6277pt x 130.57661pt.
 
- (./slides.vrb)
 
 [11
 
-]
-<../asset/IBM/oracle_complexity_real_fixed.png, id=239, 722.7pt x 433.62pt>
-File: ../asset/IBM/oracle_complexity_real_fixed.png Graphic file (type png)
-<use ../asset/IBM/oracle_complexity_real_fixed.png>
-Package pdftex.def Info: ../asset/IBM/oracle_complexity_real_fixed.png  used on input line 340.
-(pdftex.def)             Requested size: 174.09113pt x 104.45468pt.
+ <../asset/IBM/grover_oscillations_hardware_vs_theory.png>]
+<../asset/IBM/grover_hardware_vs_simulation_with_errors.png, id=289, 722.7pt x 433.62pt>
+File: ../asset/IBM/grover_hardware_vs_simulation_with_errors.png Graphic file (type png)
+<use ../asset/IBM/grover_hardware_vs_simulation_with_errors.png>
+Package pdftex.def Info: ../asset/IBM/grover_hardware_vs_simulation_with_errors.png  used on input line 449.
+(pdftex.def)             Requested size: 239.38824pt x 143.63097pt.
 
 
 [12
 
- <../asset/IBM/oracle_complexity_real_fixed.png>]
-<../asset/IBM/grover_oscillations_hardware_vs_theory.png, id=261, 722.7pt x 433.62pt>
-File: ../asset/IBM/grover_oscillations_hardware_vs_theory.png Graphic file (type png)
-<use ../asset/IBM/grover_oscillations_hardware_vs_theory.png>
-Package pdftex.def Info: ../asset/IBM/grover_oscillations_hardware_vs_theory.png  used on input line 370.
-(pdftex.def)             Requested size: 217.6277pt x 130.57661pt.
+ <../asset/IBM/grover_hardware_vs_simulation_with_errors.png>]
+<../asset/grover_heatmap_stability_range.png, id=300, 722.7pt x 578.16pt>
+File: ../asset/grover_heatmap_stability_range.png Graphic file (type png)
+<use ../asset/grover_heatmap_stability_range.png>
+Package pdftex.def Info: ../asset/grover_heatmap_stability_range.png  used on input line 456.
+(pdftex.def)             Requested size: 217.62448pt x 174.10216pt.
 
 
 [13
 
- <../asset/IBM/grover_oscillations_hardware_vs_theory.png>]
-<../asset/IBM/grover_hardware_vs_simulation.png, id=271, 722.7pt x 433.62pt>
-File: ../asset/IBM/grover_hardware_vs_simulation.png Graphic file (type png)
-<use ../asset/IBM/grover_hardware_vs_simulation.png>
-Package pdftex.def Info: ../asset/IBM/grover_hardware_vs_simulation.png  used on input line 391.
-(pdftex.def)             Requested size: 217.62448pt x 130.57661pt.
-
+ <../asset/grover_heatmap_stability_range.png>]
 
 [14
 
- <../asset/IBM/grover_hardware_vs_simulation.png>]
-<../asset/grover_heatmap_stability_range.png, id=280, 722.7pt x 578.16pt>
-File: ../asset/grover_heatmap_stability_range.png Graphic file (type png)
-<use ../asset/grover_heatmap_stability_range.png>
-Package pdftex.def Info: ../asset/grover_heatmap_stability_range.png  used on input line 412.
-(pdftex.def)             Requested size: 239.38824pt x 191.50797pt.
-
+]
 
 [15
 
- <../asset/grover_heatmap_stability_range.png>]
+]
+<../asset/grover_simulated_probability_n3_m1.png, id=364, 578.16pt x 361.35pt>
+File: ../asset/grover_simulated_probability_n3_m1.png Graphic file (type png)
+<use ../asset/grover_simulated_probability_n3_m1.png>
+Package pdftex.def Info: ../asset/grover_simulated_probability_n3_m1.png  used on input line 559.
+(pdftex.def)             Requested size: 174.09692pt x 108.80833pt.
+
 
 [16
+
+ <../asset/grover_simulated_probability_n3_m1.png>]
+<../asset/quantum_counting_ideal_vs_noisy_n3_t6.png, id=388, 867.24pt x 433.62pt>
+File: ../asset/quantum_counting_ideal_vs_noisy_n3_t6.png Graphic file (type png)
+<use ../asset/quantum_counting_ideal_vs_noisy_n3_t6.png>
+Package pdftex.def Info: ../asset/quantum_counting_ideal_vs_noisy_n3_t6.png  used on input line 598.
+(pdftex.def)             Requested size: 239.38824pt x 119.69247pt.
+
+
+[17
+
+ <../asset/quantum_counting_ideal_vs_noisy_n3_t6.png>]
+
+[18
+
+]
+Overfull \vbox (3.24574pt too high) detected at line 694
+ []
+
+
+
+[19
+
+]
+Overfull \vbox (23.51927pt too high) detected at line 756
+ []
+
+
+
+[20
+
+]
+
+[21
+
+]
+File: ../asset/geom.png Graphic file (type png)
+<use ../asset/geom.png>
+Package pdftex.def Info: ../asset/geom.png  used on input line 832.
+(pdftex.def)             Requested size: 152.33978pt x 120.54294pt.
+
+
+[22
+
+]
+File: ../asset/grover_simulated_probability_n3_m1.png Graphic file (type png)
+<use ../asset/grover_simulated_probability_n3_m1.png>
+Package pdftex.def Info: ../asset/grover_simulated_probability_n3_m1.png  used on input line 867.
+(pdftex.def)             Requested size: 174.09692pt x 108.80833pt.
+
+
+[23
 
 ]
 \tf@nav=\write6
@@ -971,18 +1027,18 @@ Package rerunfilecheck Info: File `slides.out' has not changed.
 (rerunfilecheck)             Checksum: BD3D54CC41466564591D8D8818F10FC7;604.
  ) 
 Here is how much of TeX's memory you used:
- 27747 strings out of 473190
- 554961 string characters out of 5704335
- 1080759 words of memory out of 5000000
- 50407 multiletter control sequences out of 15000+600000
- 581826 words of font info for 94 fonts, out of 8000000 for 9000
+ 28155 strings out of 473190
+ 566315 string characters out of 5704335
+ 1087759 words of memory out of 5000000
+ 50792 multiletter control sequences out of 15000+600000
+ 588048 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,18n,123p,444b,835s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsx0700.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on slides.pdf (16 pages, 1101683 bytes).
+ 128i,19n,123p,444b,1056s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfit0800.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsi0500.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsi0700.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsi1000.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsx0500.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsx0700.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfsx2488.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on slides.pdf (23 pages, 1346406 bytes).
 PDF statistics:
- 440 PDF objects out of 1000 (max. 8388607)
- 263 compressed objects within 3 object streams
- 37 named destinations out of 1000 (max. 500000)
- 412 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 759 PDF objects out of 1000 (max. 8388607)
+ 436 compressed objects within 5 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 990 words of extra memory for PDF output out of 10000 (max. 10000000)
 

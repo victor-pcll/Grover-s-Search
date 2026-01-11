@@ -1,5 +1,5 @@
 \babel@toc {english}{}\relax 
 \beamer@sectionintoc {1}{Theory: Grover $\&$ Counting}{3}{0}{1}
-\beamer@sectionintoc {2}{Complexity Analysis}{8}{0}{2}
-\beamer@sectionintoc {3}{Implementation (Qiskit)}{11}{0}{3}
-\beamer@sectionintoc {4}{Noise Analysis}{13}{0}{4}
+\beamer@sectionintoc {2}{Complexity Analysis}{6}{0}{2}
+\beamer@sectionintoc {3}{Implementation (Qiskit)}{9}{0}{3}
+\beamer@sectionintoc {4}{Noise Analysis}{11}{0}{4}
